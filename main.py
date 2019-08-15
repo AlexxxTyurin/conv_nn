@@ -3,13 +3,23 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from functions import *
 
+data = np.array(pd.read_csv("/Users/alextyurin/Desktop/pycharm_projects/recognition/train.csv"))
 
-np.random.seed(1)
+Y = np.array(data[:, 0])
 
-x = np.random.randn(4, 3, 3, 2)
+X = np.array(data[:, 1:])
+m = X.shape[0]
+X = np.reshape(X, [m, 28, 28, 1])
+W = np.random.randn(28, 28, 3, 1)
+print(X.shape)
 
-x_pad = zero_pad(x, 2)
+hparams = {'stride': 1, 'padding': 2}
 
-print(x_pad.shape)
+X = zero_pad(X, 2)
+print(X.shape)
+# print(conv_forward(X, W, 0, hparams))
+
+
+
 
 
